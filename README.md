@@ -10,7 +10,7 @@ xnpm i babel-plugin-tcon --save-dev
 
 ```json
 {
-  plugins: [
+  "plugins": [
     "babel-plugin-tcon"
   ]
 }
