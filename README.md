@@ -4,6 +4,10 @@
 
 ```
 xnpm i babel-plugin-tcon --save-dev
+
+# or npm
+
+npm i babel-plugin-tcon --save-dev
 ```
 
 添加到 plugin，指定样式文件夹 
