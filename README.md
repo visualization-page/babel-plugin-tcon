@@ -6,14 +6,14 @@
 xnpm i babel-plugin-tcon --save-dev
 ```
 
-添加到 plugin
+添加到 plugin，指定样式文件夹 
 
 ```json
 {
   "plugins": [
     [
       "babel-plugin-tcon", {
-        "libPath": "style/tcon" // 通过 tcon-cli 定制的样式
+        "libPath": "style/tcon" 
       }
     ]
   ]
