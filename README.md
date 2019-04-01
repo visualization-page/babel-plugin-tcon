@@ -10,8 +10,12 @@ xnpm i babel-plugin-tcon --save-dev
 
 ```json
 {
-  plugins: [
-    "babel-plugin-tcon"
+  "plugins": [
+    [
+      "babel-plugin-tcon", {
+        "libPath": "style/tcon" // 通过 tcon-cli 定制的样式
+      }
+    ]
   ]
 }
 ```

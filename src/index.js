@@ -1,4 +1,5 @@
 const { addSideEffect } = require('@babel/helper-module-imports')
+const { join } = require('path')
 
 module.exports = function ({ types: t }) {
   let packageName
@@ -10,10 +11,11 @@ module.exports = function ({ types: t }) {
         enter(path) {
           packageName = path.node.source.value
         },
-        exit(path) {
+        exit(path, { opts: { libPath } }) {
           if (packageName === 'tcon') {
             importModules.forEach(module => {
-              addSideEffect(path, `${packageName}/dist/${module}.css`)
+              // addSideEffect(path, `${packageName}/dist/${module}.css`)
+              addSideEffect(path, libPath ? join(libPath, `${module}.css`) : join(packageName, 'dist', `${module}.css`))
             })
             path.remove()
           }
