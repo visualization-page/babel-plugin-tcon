@@ -24,10 +24,10 @@ npm i babel-plugin-tcon --save-dev
 }
 ```
 
-作用，将
+转换的路径默认是相对于 src 的，用的 alias @，也可以不使用 alias，即 `{ noAlias: true }`，使用相对路径 `'./'`
 
 ```js
-import { button, color, layout } from 'tcon'
+import { button, color, layout } from 'tcon'  // eslint-disable-line
 ```
 
 转换为

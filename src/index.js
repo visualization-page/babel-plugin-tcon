@@ -11,11 +11,13 @@ module.exports = function ({ types: t }) {
         enter(path) {
           packageName = path.node.source.value
         },
-        exit(path, { opts: { libPath } }) {
+        exit(path, { opts: { libPath, noAlias } }) {
           if (packageName === 'tcon') {
             importModules.forEach(module => {
-              // addSideEffect(path, `${packageName}/dist/${module}.css`)
-              addSideEffect(path, libPath ? join(libPath, `${module}.css`) : join(packageName, 'dist', `${module}.css`))
+              addSideEffect(path, libPath
+                ? `${noAlias ? '.' : '@'}/${join(libPath, `${module}.css`)}`
+                : join(packageName, 'dist', `${module}.css`)
+              )
             })
             path.remove()
           }

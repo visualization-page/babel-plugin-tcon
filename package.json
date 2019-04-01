@@ -4,8 +4,8 @@
   },
   "name": "babel-plugin-tcon",
   "description": "",
-  "version": "1.0.1",
-  "main": "lid/index.js",
+  "version": "1.0.7",
+  "main": "lib/index.js",
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.4.0",
