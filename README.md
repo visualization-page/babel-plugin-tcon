@@ -15,6 +15,16 @@ npm i babel-plugin-tcon --save-dev
 ```json
 {
   "plugins": [
+    "babel-plugin-tcon"
+  ]
+}
+```
+
+当使用 `tcon-cli` 定制样式到项目后，需要指定样式目录 
+
+```json
+{
+  "plugins": [
     [
       "babel-plugin-tcon", {
         "libPath": "style/tcon" 
@@ -24,16 +34,39 @@ npm i babel-plugin-tcon --save-dev
 }
 ```
 
-转换的路径默认是相对于 src 的，用的 alias @，也可以不使用 alias，即 `{ noAlias: true }`，使用相对路径 `'./'`
+例如，默认是使用 alias `@`，在项目中一般把他设置为 `src/` 目录。
 
 ```js
-import { button, color, layout } from 'tcon'  // eslint-disable-line
+import 'tcon/button/size/layout'
+
+// ===>
+
+import '@/style/tcon/button.css'
+import '@/style/tcon/size.css'
+import '@/style/tcon/layout.css'
 ```
 
-转换为
+也可以不使用 alias
+
+```json
+{
+  "plugins": [
+    [
+      "babel-plugin-tcon", {
+        "libPath": "src/style/tcon",
+        "noAlias": true
+      }
+    ]
+  ]
+}
+```
+
+这样便需要手动指定 src 目录了
 
 ```js
-import 'tcon/dist/button.css'
-import 'tcon/dist/color.css'
-import 'tcon/dist/layout.css'
+import 'tcon/button'
+
+// ===>
+
+import './src/style/tcon/button.css'
 ```
