@@ -13,7 +13,8 @@ module.exports = function ({ types: t }) {
         },
         exit(path, { opts: { libPath, noAlias } }) {
           const sp = packageName.split('/')
-          if (sp[0] === 'tcon' && sp[1] !== 'dist') {
+          if (!/^tcon\/dist/.test(packageName)) {
+          // if (sp[0] === 'tcon' && sp[1] !== 'dist') {
             sp.slice(1).forEach(module => {
               addSideEffect(path, libPath
                 ? `${noAlias ? '.' : '@'}/${join(libPath, `${module}.css`)}`
