@@ -12,9 +12,12 @@ module.exports = function ({ types: t }) {
           }
         },
         exit(path, { opts: { libPath, noAlias } }) {
-          const sp = packageName.split('/')
-          if (!/^tcon\/dist/.test(packageName) && sp.slice(1).length > 0) {
-          // if (sp[0] === 'tcon' && sp[1] !== 'dist') {
+          let sp
+          if (/^tcon/.test(packageName)) {
+            sp = packageName.split('/')
+          }
+          // if (!/^tcon\/dist/.test(packageName) && sp.slice(1).length > 0) {
+          if (sp && sp[1] && sp[0] === 'tcon' && sp[1] !== 'dist') {
             sp.slice(1).forEach(module => {
               addSideEffect(path, libPath
                 ? `${noAlias ? '.' : '@'}/${join(libPath, `${module}.css`)}`
