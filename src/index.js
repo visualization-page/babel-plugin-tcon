@@ -13,11 +13,11 @@ module.exports = function ({ types: t }) {
         },
         exit(path, { opts: { libPath, noAlias } }) {
           const sp = packageName.split('/')
-          if (sp[0] === 'tcon') {
+          if (sp[0] === 'tcon' && sp[1] !== 'dist') {
             sp.slice(1).forEach(module => {
               addSideEffect(path, libPath
                 ? `${noAlias ? '.' : '@'}/${join(libPath, `${module}.css`)}`
-                : join(packageName, 'dist', `${module}.css`)
+                : join('tcon', 'dist', `${module}.css`)
               )
             })
             path.remove()
