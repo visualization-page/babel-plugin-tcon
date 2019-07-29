@@ -13,7 +13,7 @@ module.exports = function ({ types: t }) {
         },
         exit(path, { opts: { libPath, noAlias } }) {
           const sp = packageName.split('/')
-          if (!/^tcon\/dist/.test(packageName)) {
+          if (!/^tcon\/dist/.test(packageName) && sp.slice(1).length > 0) {
           // if (sp[0] === 'tcon' && sp[1] !== 'dist') {
             sp.slice(1).forEach(module => {
               addSideEffect(path, libPath
